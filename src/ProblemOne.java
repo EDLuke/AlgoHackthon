@@ -47,44 +47,37 @@ public class ProblemOne {
 
     private static void computeCost(int[][] costMap){
         int currentCity = -1;
+        int currentM_NY = 0;
+        int curretnM_SE = 0;
 
         for(int i = 0; i < n; i++){
-            if(currentCity == -1){
-                if(costMap[i][NY] > costMap[i][SE]){
-                    currentCity = SE;
-                    cost    += costMap[i][SE];
-                    plan[i]  = SE;
-                }
-                else{
-                    currentCity = NY;
-                    cost    += costMap[i][NY];
-                    plan[i]  = NY;
-                }
+            switch (currentCity){
+                case -1:
+                    currentM_NY = 0;
+                    curretnM_SE = 0;
+                    break;
+                case NY:
+                    currentM_NY = 0;
+                    curretnM_SE = m;
+                    break;
+                case SE:
+                    currentM_NY = m;
+                    curretnM_SE = 0;
+                    break;
             }
-            else if(currentCity == NY){
-                if(costMap[i][NY] > costMap[i][SE] + m){
-                    currentCity = SE;
-                    cost    += costMap[i][SE] + m;
-                    plan[i]  = SE;
-                }
-                else{
-                    currentCity = NY;
-                    cost    += costMap[i][NY];
-                    plan[i]  = NY;
-                }
+
+
+            if(costMap[i][NY] + currentM_NY > costMap[i][SE] + curretnM_SE){
+                currentCity = SE;
+                cost    += costMap[i][SE] + curretnM_SE;
+                plan[i]  = SE;
             }
             else{
-                if(costMap[i][NY] + m > costMap[i][SE]){
-                    currentCity = SE;
-                    cost    += costMap[i][SE];
-                    plan[i]  = SE;
-                }
-                else{
-                    currentCity = NY;
-                    cost    += costMap[i][NY] + m;
-                    plan[i]  = NY;
-                }
+                currentCity = NY;
+                cost    += costMap[i][NY] + currentM_NY;
+                plan[i]  = NY;
             }
+
         }
     }
 }
