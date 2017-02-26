@@ -29,7 +29,7 @@ public class ProblemTwo {
 
         int[] cost = computeCost(hotels);
 
-        //Print the cost at the last hotel
+        //Print the cost at hotel n
         System.out.println(cost[n - 1]);
     }
 

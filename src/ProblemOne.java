@@ -1,4 +1,4 @@
-/*1.Cost of running a business (difficulty: 5)
+/*  1.Cost of running a business (difficulty: 5)
     You are running a small business for n months. Each month i, you
     either run it out of your office in New York and incur an operating
     cost Ni, or out of your office in Seattle and incur a cost Si.
